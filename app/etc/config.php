@@ -329,7 +329,7 @@ return [
         'Training_Dependency' => 1,
         'Training_Dependency1' => 1,
         'Training_AdditionalDependency' => 1,
-        'Training_AdditionalTestOM' => 1,
+        'Training_AdditionalTestOM' => 0,
         'Training_Preference' => 1,
         'Training_PreferenceOverride' => 0,
         'Training_InjectionTestOM' => 1,
