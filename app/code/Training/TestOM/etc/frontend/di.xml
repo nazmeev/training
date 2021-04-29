@@ -8,9 +8,16 @@
         <arguments>
             <argument name="arrayList" xsi:type="array">
                 <item name="item_1" xsi:type="string">array text item front area</item>
-                <item name="item_2" xsi:type="number">600</item>
+                <item name="item_3" xsi:type="number">4444</item>
             </argument>
         </arguments>
     </type>
-
+    <type name="Training\TestOM\Model\PlayWithTest">
+        <arguments>
+            <argument name="arrayList" xsi:type="array">
+                <item name="item_1" xsi:type="string">array text PlayWithTest</item>
+                <item name="item_2" xsi:type="number">6000</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
