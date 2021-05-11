@@ -334,6 +334,7 @@ return [
         'Training_Plugins' => 0,
         'Training_Preference' => 1,
         'Training_PreferenceOverride' => 0,
+        'Training_RedirectUnloggedProductPlugin' => 1,
         'Training_SubstitutionGetUrlPlugin' => 0,
         'Training_SubstitutionRegisterUrlPlugin' => 0,
         'Training_InjectionTestOM' => 1,
