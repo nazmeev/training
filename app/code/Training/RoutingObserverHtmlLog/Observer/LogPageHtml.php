@@ -21,7 +21,7 @@ class LogPageHtml implements ObserverInterface
 
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        $response = $observer->getData('request');
+        $response = $observer->getData('response');
         $this->logger->debug($response->getBody());
     }
 }
