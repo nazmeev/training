@@ -323,6 +323,7 @@ return [
         'PayPal_BraintreeGraphQl' => 1,
         'Temando_ShippingRemover' => 1,
         'Training_CustomFrontController' => 1,
+        'Training_Handler404' => 1,
         'Training_RoutingObserverHtmlLog' => 0,
         'Vertex_Tax' => 1,
         'Vertex_AddressValidationApi' => 1,
