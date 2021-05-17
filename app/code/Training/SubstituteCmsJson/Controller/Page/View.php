@@ -4,50 +4,71 @@ namespace Training\SubstituteCmsJson\Controller\Page;
 
 use Magento\Cms\Helper\Page as PageHelper;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\RequestInterface;
-use \Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Cms\Api\PageRepositoryInterface;
 
-class View extends \Magento\Cms\Controller\Page\View
+class View implements HttpGetActionInterface, HttpPostActionInterface
 {
-    protected $resultJsonFactory;
+    protected $resultFactory;
     protected $pageRepository;
+    protected $request;
+    private $pageHelper;
 
     public function __construct(
-        \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\Controller\Result\ForwardFactory $resultForwardFactory,
-        \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory,
-        \Magento\Cms\Api\PageRepositoryInterface $pageRepository,
-
-        RequestInterface $request,
-        PageHelper $pageHelper
+        PageHelper $pageHelper,
+        Context $context,
+        PageRepositoryInterface $pageRepository,
+        RequestInterface $request
     )
     {
-        $this->resultJsonFactory = $resultJsonFactory;
+        $this->pageHelper = $pageHelper;
+        $this->resultFactory = $context->getResultFactory();
+        $this->request = $request;
         $this->pageRepository = $pageRepository;
-        parent::__construct($context, $request, $pageHelper, $resultForwardFactory);
     }
 
+    /**
+     * @return bool|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     */
     public function execute()
     {
-        if ($this->getRequest()->isAjax()) {
-            $data = ['status' => 'success', 'message' => ''];
+        $pageId = $this->request->getParam('page_id', $this->request->getParam('id', false));
 
-            $pageId = $this->getRequest()->getParam('page_id', $this->getRequest()->getParam('id', false));
-            $resultJson = $this->resultJsonFactory->create();
-            try {
-                $page = $this->pageRepository->getById($pageId);
-                $data['title'] = $page->getTitle();
-                $data['content'] = $page->getContent();
-            } catch (NoSuchEntityException $e) {
-                $data['status'] = 'error';
-                $data['message'] = 'Not found';
-            } catch (\Exception $e) {
-                $data['status'] = 'error';
-                $data['message'] = 'Something wrong';
-            }
+        if ($this->request->isAjax()) {
+            $resultJson = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_JSON);
+            $data = $this->setJsonData($pageId);
+
             $resultJson->setData($data);
             return $resultJson;
         }
-        return parent::execute();
+        return $this->parentExecute($pageId);
     }
+
+    private function setJsonData($pageId)
+    {
+        $data = ['status' => 'success', 'message' => ''];
+        try {
+            $page = $this->pageRepository->getById($pageId);
+            $data['title'] = $page->getTitle();
+            $data['content'] = $page->getContent();
+        } catch (NoSuchEntityException $e) {
+            $data['status'] = 'error';
+            $data['message'] = 'Not found';
+        } catch (\Exception $e) {
+            $data['status'] = 'error';
+            $data['message'] = 'Something wrong';
+        }
+        return $data;
+    }
+
+    public function parentExecute($pageId)
+    {
+        $resultPage = $this->pageHelper->prepareResultPage($this, $pageId);
+        return $resultPage;
+    }
+
+
 }
