@@ -1,7 +1,9 @@
 <?php
 
 namespace Training\RenderSimpletextController\Controller\Page;
-class Index implements \Magento\Framework\App\ActionInterface
+use Magento\Framework\App\Action\HttpGetActionInterface;
+
+class Index implements HttpGetActionInterface
 {
     private $resultFactory;
 

@@ -326,6 +326,7 @@ return [
         'Training_Handler404' => 0,
         'Training_RenderSimpletextController' => 1,
         'Training_RoutingObserverHtmlLog' => 1,
+        'Training_SubstituteCmsJson' => 1,
         'Vertex_Tax' => 1,
         'Vertex_AddressValidationApi' => 1,
         'Vertex_AddressValidation' => 1,
