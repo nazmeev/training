@@ -20,4 +20,5 @@ class Index implements HttpGetActionInterface
         $resultRaw->setContents('simple text2');
         return $resultRaw;
     }
+
 }

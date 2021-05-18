@@ -324,6 +324,7 @@ return [
         'Temando_ShippingRemover' => 1,
         'Training_CustomFrontController' => 1,
         'Training_Handler404' => 0,
+        'Training_RedirectUnloggedProductController' => 1,
         'Training_RenderSimpletextController' => 1,
         'Training_RoutingObserverHtmlLog' => 1,
         'Training_SubstituteCmsJson' => 1,

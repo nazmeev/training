@@ -5,12 +5,11 @@ namespace Training\SubstituteCmsJson\Controller\Page;
 use Magento\Cms\Helper\Page as PageHelper;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
-use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Cms\Api\PageRepositoryInterface;
 
-class View implements HttpGetActionInterface, HttpPostActionInterface
+class View implements HttpGetActionInterface
 {
     protected $resultFactory;
     protected $pageRepository;
