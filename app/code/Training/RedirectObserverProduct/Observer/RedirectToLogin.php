@@ -15,7 +15,7 @@ class RedirectToLogin implements ObserverInterface
      */
     private $actionFlag;
 
-    /** @var \Magento\Customer\Model\Session  */
+    /** @var \Magento\Customer\Model\Session */
     private $customerSession;
 
     /**
@@ -36,13 +36,10 @@ class RedirectToLogin implements ObserverInterface
 
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        $request = $observer->getEvent()->getData('request');
-        if ($request->getFullActionName() == 'catalog_product_view') {
-            if (!$this->customerSession->isLoggedIn()) {
-                $controller = $observer->getData('controller_action');
-                $this->actionFlag->set('', \Magento\Framework\App\ActionInterface::FLAG_NO_DISPATCH, true);
-                $this->redirect->redirect($controller->getResponse(), 'customer/account/login');
-            }
+        if (!$this->customerSession->isLoggedIn()) {
+            $controller = $observer->getData('controller_action');
+            $this->actionFlag->set('', \Magento\Framework\App\ActionInterface::FLAG_NO_DISPATCH, true);
+            $this->redirect->redirect($controller->getResponse(), 'customer/account/login');
         }
     }
 }
