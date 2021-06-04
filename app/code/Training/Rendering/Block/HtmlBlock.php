@@ -8,7 +8,7 @@ class HtmlBlock extends AbstractBlock
 {
     public function _toHtml():string
     {
-        return "Hello world2";
+        return "Hello world3";
     }
 }
 
