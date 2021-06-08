@@ -6,6 +6,7 @@ class Description{
     public function beforeToHtml(
         \Magento\Catalog\Block\Product\View\Description $subject
     ){
-        $subject->getProduct()->setData('description', 'Test description');
+//        $subject->getProduct()->setData('description', 'Test description');
+        $subject->setTemplate('Training_Rendering::description.phtml');
     }
 }
