@@ -2,11 +2,14 @@
 
 namespace Training\Rendering\Plugin\Block\Product\View;
 
-class Description{
+class Description
+{
     public function beforeToHtml(
         \Magento\Catalog\Block\Product\View\Description $subject
-    ){
+    )
+    {
 //        $subject->getProduct()->setData('description', 'Test description');
-        $subject->setTemplate('Training_Rendering::description.phtml');
+        if ($subject->getNameInLayout() == 'product.info.sku')
+            $subject->setTemplate('Training_Rendering::description.phtml');
     }
 }
