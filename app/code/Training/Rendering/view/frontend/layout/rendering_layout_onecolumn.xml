@@ -4,4 +4,5 @@
     <head>
         <title>Success Page</title>
     </head>
+    <referenceBlock name="testargument" remove="true"/>
 </page>
