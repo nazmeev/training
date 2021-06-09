@@ -10,14 +10,15 @@
 
     <referenceContainer name="top.container">
         <block class="Magento\Framework\View\Element\Template" name="topinfo_boo"
-               template="Training_Rendering::Product/topinfo.phtml"/>
+               template="Training_Rendering::topinfo.phtml"/>
     </referenceContainer>
     <referenceContainer name="content">
         <block class="Magento\Framework\View\Element\Template" name="testargument"
                template="Training_Rendering::topinfo.phtml">
             <arguments>
-                <argument name="background_color" xsi:type="string">red</argument>
+                <argument name="background_color" xsi:type="string">blue</argument>
             </arguments>
         </block>
     </referenceContainer>
+
 </page>
