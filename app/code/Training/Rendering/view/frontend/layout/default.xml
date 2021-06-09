@@ -1,0 +1,15 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+       <referenceContainer name="product.info.extrahint">
+           <block class="Magento\Framework\View\Element\Template" name="boo_block_1" template="Training_Rendering::topinfo.phtml">
+               <block class="Magento\Framework\View\Element\Template" name="boo_block_2" template="Training_Rendering::topinfo.phtml">
+
+               </block>
+           </block>
+       </referenceContainer>
+
+       <referenceContainer name="top.container">
+           <block class="Magento\Framework\View\Element\Template" name="topinfo_boo"
+                  template="Training_Rendering::Product/topinfo.phtml"/>
+       </referenceContainer>
+</page>
