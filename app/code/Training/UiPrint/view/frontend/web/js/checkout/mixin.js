@@ -8,9 +8,9 @@ define([
     return function (placeOrderAction) {
         return wrapper.wrap(placeOrderAction, function (originalAction, paymentData, messageContainer) {
 
-            var additionalData = [];
-            additionalData['additional_data'] = [];
-            additionalData['additional_data']['printed-invoice'] = '999999999'; //$('#printed-invoice').prop('checked');
+            var additionalData = {};
+            additionalData.additional_data = {};
+            additionalData['additional_data']['printed-invoice'] = $('#printed-invoice').prop('checked');
 
             paymentData = _.extend(paymentData, additionalData);
             return originalAction(paymentData, messageContainer);
