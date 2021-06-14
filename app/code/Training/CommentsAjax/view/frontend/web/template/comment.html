@@ -1,0 +1,10 @@
+<div class="random-review-box" data-bind="blockLoader: isLoading">
+    <h3 data-bind="i18n: 'Random Comment'"></h3>
+    <div class="random-comment">
+        <p data-bind="text: commenterName()"/>
+        <p data-bind="text: commenterMessage()"/>
+    </div>
+    <div class="action">
+        <button type="button" data-bind="i18n: 'Next Comment', click: nextComment"></button>
+    </div>
+</div>

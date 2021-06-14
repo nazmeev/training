@@ -322,6 +322,7 @@ return [
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeGraphQl' => 1,
         'Temando_ShippingRemover' => 1,
+        'Training_CommentsAjax' => 1,
         'Training_Stage4' => 1,
         'Training_UiPrint' => 1,
         'Vertex_Tax' => 1,
