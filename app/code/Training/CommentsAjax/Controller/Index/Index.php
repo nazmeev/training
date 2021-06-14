@@ -2,29 +2,24 @@
 
 namespace Training\CommentsAjax\Controller\Index;
 
-use Magento\Framework\Serialize\Serializer\Json as JsonSerializer;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 
 class Index implements HttpPostActionInterface
 {
     private $jsonResultFactory;
-    private $serializer;
 
     public function __construct(
-        JsonSerializer $serializer,
         JsonFactory $jsonFactory
     )
     {
-        $this->serializer = $serializer;
         $this->jsonResultFactory = $jsonFactory;
     }
 
     public function execute()
     {
         $result = $this->jsonResultFactory->create();
-        $serializedData = $this->serializer->serialize($this->getRandomReviewData());
-        return $result->setData($serializedData);
+        return $result->setData($this->getRandomReviewData());
     }
 
     private function getRandomReviewData()

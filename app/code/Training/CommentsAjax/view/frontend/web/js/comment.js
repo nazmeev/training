@@ -23,7 +23,7 @@ define([
                 dataType: 'json'
             })
                 .done(function (data) {
-                    data = JSON.parse(data);
+                    // data = JSON.parse(data);
                     if (data.name && data.message) {
                         self.commenterName(data.name);
                         self.commenterMessage(data.message);
