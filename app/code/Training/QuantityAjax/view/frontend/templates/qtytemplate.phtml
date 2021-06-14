@@ -1,0 +1,21 @@
+
+<div data-bind="scope: 'qtyProduct'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "qtyProduct": {
+                    "component": "Training_QuantityAjax/js/qtyproduct",
+                    "config": {
+                        "template": "Training_QuantityAjax/qty",
+                        "url": <?= json_encode($block->getUrl('quantityajax/index/index')) ?>
+                    }
+                }
+            }
+        }
+    }
+}
+</script>

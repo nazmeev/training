@@ -1,0 +1,9 @@
+<div class="random-review-box" data-bind="blockLoader: isLoading">
+    <h3 data-bind="i18n: 'Qty Product'"></h3>
+    <div class="qty-product-container">
+        <p data-bind="text: qty()"/>
+    </div>
+    <div class="action">
+        <button type="button" data-bind="i18n: 'Get Qty', click: getQty"></button>
+    </div>
+</div>
