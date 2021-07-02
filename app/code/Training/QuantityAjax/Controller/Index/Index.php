@@ -1,6 +1,6 @@
 <?php
 
-namespace Training\QuantityAjax\Controller\QtyProduct;
+namespace Training\QuantityAjax\Controller\Index;
 
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
