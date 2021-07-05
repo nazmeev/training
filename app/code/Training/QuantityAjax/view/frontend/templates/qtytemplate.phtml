@@ -1,18 +1,11 @@
 <?php
 /** @var Magento\Framework\View\Element\Template $block */
-/** @var  $viewModel Training\QuantityAjax\ViewModel\CurrentProduct */
-$viewModel = $block->getViewModel();
-
-/** @var $_block \Magento\Catalog\Block\Product\View */
-var_dump($_block); die;
-$_product = $_block->getProduct();
-var_dump($_product->urlEncoder); die;
+///** @var  Magento\Catalog\Block\Product\View $block */
+$viewModel = $block->getVModel();
 ?>
-
 <div data-bind="scope: 'qtyProduct'">
     <!-- ko template: getTemplate() --><!-- /ko -->
 </div>
-
 <script type="text/x-magento-init">
 {
     "*": {
@@ -22,7 +15,7 @@ var_dump($_product->urlEncoder); die;
                     "component": "Training_QuantityAjax/js/qtyproduct",
                     "config": {
                         "template": "Training_QuantityAjax/qty",
-                        "product_id": "<?= $viewModel->getProductId($_product); ?>"
+                        "product_id": <?= $viewModel->getProductId() ?>,
                         "url": <?= json_encode($block->getUrl('quantityajax/index/index')) ?>
                     }
                 }
@@ -30,6 +23,4 @@ var_dump($_product->urlEncoder); die;
         }
     }
 }
-
-
 </script>

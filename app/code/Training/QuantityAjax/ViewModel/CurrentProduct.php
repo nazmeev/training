@@ -2,22 +2,29 @@
 
 namespace Training\QuantityAjax\ViewModel;
 
-use Magento\Catalog\Model\Product;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 class CurrentProduct implements ArgumentInterface
 {
-    public function __construct()
+    private $registry;
+    private $product;
+
+    public function __construct(
+        \Magento\Framework\Registry $registry
+    )
     {
+        $this->registry = $registry;
+
+        $this->product = $this->getCurrentProduct();
     }
 
-    /**
-     * @param Product $product
-     * @return int
-     */
-    public function getProductId(Product $product): int
+    public function getProductId()
     {
-        return $product->getId();
+        return $this->product->getId();
     }
 
+    public function getCurrentProduct()
+    {
+        return $this->registry->registry('current_product');
+    }
 }
