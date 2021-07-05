@@ -1,7 +1,9 @@
 <?php
-/** @var Magento\Framework\View\Element\Template $block */
-///** @var  Magento\Catalog\Block\Product\View $block */
+///** @var Magento\Framework\View\Element\Template $block */
+/** @var  Magento\Catalog\Block\Product\View $block */
 $viewModel = $block->getVModel();
+$product = $block->getProduct();
+$productId = $product->getId();
 ?>
 <div data-bind="scope: 'qtyProduct'">
     <!-- ko template: getTemplate() --><!-- /ko -->
@@ -15,7 +17,7 @@ $viewModel = $block->getVModel();
                     "component": "Training_QuantityAjax/js/qtyproduct",
                     "config": {
                         "template": "Training_QuantityAjax/qty",
-                        "product_id": <?= $viewModel->getProductId() ?>,
+                        "product_id": <?= $productId ?>,
                         "url": <?= json_encode($block->getUrl('quantityajax/index/index')) ?>
                     }
                 }
