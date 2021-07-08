@@ -2,7 +2,7 @@
 /** @var Magento\Framework\View\Element\Template $block */
 $viewModel = $block->getViewModel() ?>
 <form class="form contact"
-      action="<?= $block->escapeUrl($block->getActionUrl()) ?>"
+      action="<?= $block->escapeUrl($viewModel->getActionUrl()) ?>"
       id="feedback-form"
       method="post"
       data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
@@ -37,9 +37,8 @@ $viewModel = $block->getViewModel() ?>
                 <span><?= $block->escapeHtml(__('What’s on your mind?')) ?></span>
             </label>
             <div class="control">
-<textarea name="message" id="message"
-          title="<?= $block->escapeHtmlAttr(__('What’s on your mind?')) ?>"
-          class="input-text" cols="5" rows="3" data-validate="{required:true}"></textarea>
+                <textarea name="message" id="message" title="<?= $block->escapeHtmlAttr(__('What’s on your mind?')) ?>"
+                          class="input-text" cols="5" rows="3" data-validate="{required:true}"></textarea>
             </div>
         </div>
     </fieldset>

@@ -5,9 +5,6 @@ namespace Training\Feedback\Controller\Form;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
-use Magento\Framework\Exception\NotFoundException;
-
-use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 
 class Index implements HttpGetActionInterface
@@ -24,10 +21,7 @@ class Index implements HttpGetActionInterface
     }
 
     /**
-     * Execute action based on request and return result
-     *
-     * @return ResultInterface|ResponseInterface
-     * @throws NotFoundException
+     * @return ResponseInterface|ResultInterface|\Magento\Framework\View\Result\Page
      */
     public function execute()
     {
