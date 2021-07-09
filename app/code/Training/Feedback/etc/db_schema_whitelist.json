@@ -1,0 +1,19 @@
+{
+    "training_feedback": {
+        "column": {
+            "feedback_id": true,
+            "author_name": true,
+            "message": true,
+            "creation_time": true,
+            "update_time": true,
+            "is_active": true,
+            "author_email": true
+        },
+        "index": {
+            "TRAINING_FEEDBACK_FEEDBACK_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
