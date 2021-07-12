@@ -1,11 +1,15 @@
 <?xml version="1.0"?>
 
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <update handle="customer_account"/>
-    <body>
-        <referenceContainer name="content">
-            <block class="Magento\Customer\Block\Form\Edit" name="customer_edit" template="Training_CustomerPersonalSite::form/edit.phtml">
-            </block>
-        </referenceContainer>
-    </body>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="content">
+        <block class="Magento\Customer\Block\Form\Edit" name="customer_edit"
+               template="Training_CustomerPersonalSite::form/edit.phtml" >
+            <arguments>
+                <argument name="view_model" xsi:type="object">
+                    Training\CustomerPersonalSite\ViewModel\CustomerAttribute
+                </argument>
+            </arguments>
+        </block>
+    </referenceContainer>
 </page>

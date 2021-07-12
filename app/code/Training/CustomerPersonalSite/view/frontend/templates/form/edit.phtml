@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
@@ -8,6 +9,8 @@ use Magento\Customer\Block\Widget\Name;
 
 /** @var \Magento\Customer\Block\Form\Edit $block */
 /** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+print_r($block->debug()); die;
+$viewModel=$block->getViewModel();
 ?>
 <form class="form form-edit-account"
       action="<?= $block->escapeUrl($block->getUrl('customer/account/editPost')) ?>"
@@ -32,6 +35,16 @@ use Magento\Customer\Block\Widget\Name;
         <?php if ($_gender->isEnabled()): ?>
             <?= $_gender->setGender($block->getCustomer()->getGender())->toHtml() ?>
         <?php endif ?>
+        <div class="field">
+            <label for="personal_site" class="label">
+                <span><?= $block->escapeHtml(__('Personal Site')) ?></span>
+            </label>
+            <div class="control">
+                <input type="text" name="personal_site" id="personal_site"
+                       value="<?= $viewModel->getPersonalSite($block->getCustomer()) ?>"
+                       title="<?= $block->escapeHtmlAttr(__('Personal Site')) ?>" class="input-text">
+            </div>
+        </div>
         <div class="field choice">
             <input type="checkbox" name="change_email" id="change-email" data-role="change-email" value="1"
                    title="<?= $block->escapeHtmlAttr(__('Change Email')) ?>" class="checkbox" />
