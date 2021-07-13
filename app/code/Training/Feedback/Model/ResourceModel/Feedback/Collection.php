@@ -12,6 +12,7 @@ class Collection extends AbstractCollection
      * @var string
      */
     protected $_eventPrefix = 'training_feedback_collection';
+    protected $_eventObject = 'feedback_collection';
 
     /**
      * @inheritdoc
