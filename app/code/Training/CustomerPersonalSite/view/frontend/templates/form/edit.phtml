@@ -1,15 +1,10 @@
 <?php
 
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
 use Magento\Customer\Block\Widget\Name;
 
-/** @var \Magento\Customer\Block\Form\Edit $block */
 /** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
-print_r($block->debug()); die;
+/** @var \Magento\Customer\Block\Edit $block */
+/** @var Training\CustomerPersonalSite\ViewModel\CustomerAttribute $viewModel */
 $viewModel=$block->getViewModel();
 ?>
 <form class="form form-edit-account"
@@ -174,6 +169,7 @@ $scriptString .= <<<script
     });
 script;
 ?>
+
 <?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>
 <?php $changeEmailAndPasswordTitle = $block->escapeHtml(__('Change Email and Password')) ?>
 <script type="text/x-magento-init">

@@ -324,6 +324,7 @@ return [
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeGraphQl' => 1,
         'Temando_ShippingRemover' => 1,
+        'Training_CustomerAttributePhone' => 0,
         'Training_CustomerPersonalSite' => 1,
         'Training_Feedback' => 1,
         'Training_Stage4' => 1,
