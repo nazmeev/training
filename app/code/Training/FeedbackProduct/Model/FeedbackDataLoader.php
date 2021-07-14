@@ -3,7 +3,7 @@
 namespace Training\FeedbackProduct\Model;
 class FeedbackDataLoader
 {
-    const PRODUCT_ID_FIELD = 'entity_id';
+    const PRODUCT_ID_FIELD = 'product_id';
     const PRODUCT_SKU_FIELD = 'sku';
     private $productRepository;
     private $searchCriteriaBuilder;

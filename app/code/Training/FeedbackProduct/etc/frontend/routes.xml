@@ -2,7 +2,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
         <route id="training_feedback" frontName="feedback">
-            <module name="Training_FeedbackProduct" after="Training_Feedback" />
+            <module name="Training_FeedbackProduct" before="Training_Feedback" />
         </route>
     </router>
 </config>

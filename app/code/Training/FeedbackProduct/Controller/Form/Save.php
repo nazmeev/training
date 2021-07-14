@@ -2,36 +2,42 @@
 
 namespace Training\FeedbackProduct\Controller\Form;
 
-use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Message\ManagerInterface;
 
 class Save implements HttpPostActionInterface
 {
     private $feedbackFactory;
     private $feedbackResource;
     private $feedbackDataLoader;
-    private Context $context;
+    private $request;
+    private $resultRedirectFactory;
+    private $messageManager;
 
     public function __construct(
         \Training\Feedback\Model\FeedbackFactory $feedbackFactory,
         \Training\Feedback\Model\ResourceModel\Feedback $feedbackResource,
         \Training\FeedbackProduct\Model\FeedbackDataLoader $feedbackDataLoader,
-        Context $context
+        RequestInterface $request,
+        RedirectFactory $redirectFactory,
+        ManagerInterface $messageManager
     )
     {
         $this->feedbackFactory = $feedbackFactory;
         $this->feedbackResource = $feedbackResource;
         $this->feedbackDataLoader = $feedbackDataLoader;
-        $this->context = $context;
+        $this->request = $request;
+        $this->resultRedirectFactory = $redirectFactory;
+        $this->messageManager = $messageManager;
     }
 
     public function execute()
     {
-//        $result = $this->resultRedirectFactory->create();
-
-        die('11');
-        if ($post = $this->getRequest()->getPostValue()) {
+        $result = $this->resultRedirectFactory->create();
+        if ($post = $this->request->getPostValue()) {
             try {
                 $this->validatePost($post);
                 $feedback = $this->feedbackFactory->create();
@@ -78,7 +84,7 @@ class Save implements HttpPostActionInterface
         if (!isset($post['author_email']) || false === \strpos($post['author_email'], '@')) {
             throw new LocalizedException(__('Invalid email address'));
         }
-        if (trim($this->getRequest()->getParam('hideit')) !== '') {
+        if (trim($this->request->getParam('hideit')) !== '') {
             throw new \Exception();
         }
     }
