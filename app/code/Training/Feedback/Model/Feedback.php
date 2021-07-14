@@ -3,7 +3,6 @@
 namespace Training\Feedback\Model;
 
 use Training\Feedback\Model\ResourceModel\Feedback as ResourceModel;
-use \Training\Feedback\Api\Data\FeedbackExtensionInterface;
 
 class Feedback extends \Magento\Framework\Model\AbstractExtensibleModel implements \Training\Feedback\Api\Data\FeedbackInterface
 {
@@ -84,7 +83,7 @@ class Feedback extends \Magento\Framework\Model\AbstractExtensibleModel implemen
      *
      * @return bool
      */
-    public function isActive()
+    public function getIsActive()
     {
         return (bool)$this->getData(self::IS_ACTIVE);
     }
@@ -161,22 +160,11 @@ class Feedback extends \Magento\Framework\Model\AbstractExtensibleModel implemen
         return $this->setData(self::IS_ACTIVE, $isActive);
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @return FeedbackExtensionInterface|null
-     */
     public function getExtensionAttributes()
     {
         return $this->_getExtensionAttributes();
     }
-    /**
-     * {@inheritdoc}
-     *
-     * @param FeedbackExtensionInterface $extensionAttributes
-     * @return $this
-     */
-    public function setExtensionAttributes(FeedbackExtensionInterface $extensionAttributes)
+    public function setExtensionAttributes(\Training\Feedback\Api\Data\FeedbackExtensionInterface $extensionAttributes)
     {
         return $this->_setExtensionAttributes($extensionAttributes);
     }

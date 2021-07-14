@@ -6,6 +6,8 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 class Feedback extends AbstractDb
 {
+    protected $_eventPrefix = 'training_feedback_resource_model';
+
     protected function _construct()
     {
         $this->_init('training_feedback', 'feedback_id');
@@ -25,7 +27,7 @@ class Feedback extends AbstractDb
 
         $select = $adapter->select()
             ->from('training_feedback', new \Zend_Db_Expr('COUNT(*)'))
-            ->where('is_active = ?', \Training\Feedback\Model\Feedback::STATUS_INACTIVE);
+            ->where('is_active = ?', \Training\Feedback\Model\Feedback::STATUS_ACTIVE);
         return $adapter->fetchOne($select);
     }
 }

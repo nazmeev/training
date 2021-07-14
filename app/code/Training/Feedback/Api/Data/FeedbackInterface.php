@@ -60,7 +60,7 @@ interface FeedbackInterface
      *
      * @return bool|null
      */
-    public function isActive();
+    public function getIsActive();
 
     /**
      * Set ID
