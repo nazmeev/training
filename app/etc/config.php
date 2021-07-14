@@ -326,6 +326,7 @@ return [
         'Temando_ShippingRemover' => 1,
         'Training_CustomerPersonalSite' => 1,
         'Training_Feedback' => 1,
+        'Training_FeedbackProduct' => 1,
         'Vertex_Tax' => 1,
         'Vertex_AddressValidationApi' => 1,
         'Vertex_AddressValidation' => 1,
