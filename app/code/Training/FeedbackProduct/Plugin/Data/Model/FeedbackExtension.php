@@ -1,6 +1,6 @@
 <?php
 
-namespace Training\FeedbackProduct\Plugin\Model;
+namespace Training\FeedbackProduct\Plugin\Data\Model;
 
 class FeedbackExtension
 {

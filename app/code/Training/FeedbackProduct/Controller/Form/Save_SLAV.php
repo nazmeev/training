@@ -5,49 +5,52 @@ namespace Training\FeedbackProduct\Controller\Form;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Training\Feedback\Api\FeedbackRepositoryInterface;
+use Training\Feedback\Model\Feedback;
 
-class Save implements HttpPostActionInterface
+class Save___SSSS implements HttpPostActionInterface
 {
-    private $feedbackFactory;
-    private $feedbackResource;
-    private $feedbackDataLoader;
+    private FeedbackRepositoryInterface $feedbackRepository;
+
     private Context $context;
 
     public function __construct(
-        \Training\Feedback\Model\FeedbackFactory $feedbackFactory,
-        \Training\Feedback\Model\ResourceModel\Feedback $feedbackResource,
-        \Training\FeedbackProduct\Model\FeedbackDataLoader $feedbackDataLoader,
+        FeedbackRepositoryInterface $feedbackRepository,
         Context $context
     )
     {
-        $this->feedbackFactory = $feedbackFactory;
-        $this->feedbackResource = $feedbackResource;
-        $this->feedbackDataLoader = $feedbackDataLoader;
+        $this->feedbackRepository = $feedbackRepository;
         $this->context = $context;
     }
 
     public function execute()
     {
-//        $result = $this->resultRedirectFactory->create();
+        $result = $this->context->getResultRedirectFactory()->create();
 
-        die('11');
-        if ($post = $this->getRequest()->getPostValue()) {
+        $post = $this->context->getRequest()->getPostValue();
+
             try {
                 $this->validatePost($post);
+
+                /**
+                 * @var $feedback Feedback
+                 */
                 $feedback = $this->feedbackFactory->create();
+                unset($post['id']);
                 $feedback->setData($post);
                 $this->setProductsToFeedback($feedback, $post);
-                $this->feedbackResource->save($feedback);
-                $this->messageManager->addSuccessMessage(
+
+                $this->feedbackRepository->save($feedback);
+                $this->context->getMessageManager()->addSuccessMessage(
                     __('Thank you for your feedback.')
                 );
             } catch (\Exception $e) {
-                $this->messageManager->addErrorMessage(
+                $this->context->getMessageManager()->addErrorMessage(
                     __('An error occurred while processing your form. Please try again later.')
                 );
                 $result->setPath('*/*/form');
             }
-        }
+
         $result->setPath('*/*/index');
         return $result;
     }
@@ -63,7 +66,7 @@ class Save implements HttpPostActionInterface
         $this->feedbackDataLoader->addProductsToFeedbackBySkus($feedback, $skus);
     }
 
-    private function validatePost($post)
+    private function validatePost(array $post)
     {
         if (!isset($post['author_name']) || trim($post['author_name']) === '') {
             throw new LocalizedException(__('Name is missing'));
@@ -71,15 +74,12 @@ class Save implements HttpPostActionInterface
         if (!isset($post['message']) || trim($post['message']) === '') {
             throw new LocalizedException(__('Comment is missing'));
         }
-        if (!isset($post['products_skus']) || trim($post['products_skus']) === '') {
-            throw new LocalizedException(__('sku is missing'));
-        }
 
         if (!isset($post['author_email']) || false === \strpos($post['author_email'], '@')) {
             throw new LocalizedException(__('Invalid email address'));
         }
-        if (trim($this->getRequest()->getParam('hideit')) !== '') {
-            throw new \Exception();
-        }
+//        if (trim($this->getRequest()->getParam('hideit')) !== '') {
+//            throw new \Exception();
+//        }
     }
 }
