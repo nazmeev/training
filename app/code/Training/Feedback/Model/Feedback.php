@@ -2,7 +2,6 @@
 
 namespace Training\Feedback\Model;
 
-use Magento\Framework\Model\AbstractModel;
 use Training\Feedback\Model\ResourceModel\Feedback as ResourceModel;
 use \Training\Feedback\Api\Data\FeedbackExtensionInterface;
 

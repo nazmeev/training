@@ -18,7 +18,6 @@ class FeedbackExtension
         $result
     )
     {
-        die('stop');
         if (!is_null($result)) {
             return $result;
         }
