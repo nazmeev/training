@@ -41,7 +41,7 @@ class FeedbackList extends \Magento\Framework\View\Element\Template
             /* @var $pagerBlock \Magento\Theme\Block\Html\Pager */
             $pagerBlock
                 ->setUseContainer(false)
-                ->setShowPerPage(false)
+                ->setShowPerPage(true)
                 ->setShowAmounts(false)
                 ->setLimit($this->getLimit())
                 ->setCollection($this->getCollection());

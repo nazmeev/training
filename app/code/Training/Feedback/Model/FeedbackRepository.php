@@ -115,6 +115,7 @@ class FeedbackRepository implements FeedbackRepositoryInterface
         $searchResults->setSearchCriteria($criteria);
         $searchResults->setItems($collection->getItems());
         $searchResults->setTotalCount($collection->getSize());
+        echo $collection->getSelect();
         return $searchResults;
     }
 

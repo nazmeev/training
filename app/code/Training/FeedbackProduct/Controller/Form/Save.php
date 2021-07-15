@@ -8,7 +8,7 @@ use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\ManagerInterface;
 use Training\FeedbackProduct\Model\FeedbackDataLoader;
-use Training\Feedback\Model\ResourceModel\Feedback;
+use Training\Feedback\Model\ResourceModel\Feedback as FeedbackResource;
 use Training\Feedback\Model\FeedbackFactory;
 
 class Save implements HttpPostActionInterface
@@ -22,7 +22,7 @@ class Save implements HttpPostActionInterface
 
     public function __construct(
         FeedbackFactory $feedbackFactory,
-        Feedback $feedbackResource,
+        FeedbackResource $feedbackResource,
         FeedbackDataLoader $feedbackDataLoader,
         RequestInterface $request,
         RedirectFactory $redirectFactory,
@@ -45,13 +45,13 @@ class Save implements HttpPostActionInterface
                 $this->validatePost($post);
                 $feedback = $this->feedbackFactory->create();
                 $feedback->setData($post);
+
                 $this->setProductsToFeedback($feedback, $post);
                 $this->feedbackResource->save($feedback);
                 $this->messageManager->addSuccessMessage(
                     __('Thank you for your feedback.')
                 );
             } catch (\Exception $e) {
-                var_dump($e->getMessage()); die;
                 $this->messageManager->addErrorMessage(
                     __('An error occurred while processing your form. Please try again later. FeedbackProduct')
                 );

@@ -1,20 +1,36 @@
 <?php
 
 namespace Training\FeedbackProduct\Model;
+
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Framework\Api\FilterBuilder;
+use Magento\Framework\Api\SearchCriteriaBuilder;
+
 class FeedbackDataLoader
 {
-    const PRODUCT_ID_FIELD = 'product_id';
     const PRODUCT_SKU_FIELD = 'sku';
+    const PRODUCT_ID_FIELD = 'product_id';
+
+    /**
+     * @var ProductRepositoryInterface
+     */
     private $productRepository;
+
+    /**
+     * @var SearchCriteriaBuilder
+     */
     private $searchCriteriaBuilder;
+
+    /**
+     * @var FilterBuilder
+     */
     private $filterBuilder;
 
     public function __construct(
-        \Magento\Catalog\Api\ProductRepositoryInterface $productRepository,
-        \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder,
-        \Magento\Framework\Api\FilterBuilder $filterBuilder
-    )
-    {
+        ProductRepositoryInterface $productRepository,
+        SearchCriteriaBuilder $searchCriteriaBuilder,
+        FilterBuilder $filterBuilder
+    ) {
         $this->productRepository = $productRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->filterBuilder = $filterBuilder;
