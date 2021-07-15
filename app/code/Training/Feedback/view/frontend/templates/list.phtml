@@ -17,6 +17,7 @@
         <?= $block->getPagerHtml() ?>
     </div>
     <div class="feedback-list">
+        -----<?php echo $block->getCollection()->getSelect();?>-----
         <?php foreach ($block->getCollection() as $feedback): ?>
             <div class="feedback-item" style="background-color: #55ecf4; margin: 5px;">
                 <p>

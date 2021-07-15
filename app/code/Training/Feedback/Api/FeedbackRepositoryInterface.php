@@ -2,43 +2,47 @@
 
 namespace Training\Feedback\Api;
 
+use Training\Feedback\Api\Data\FeedbackInterface;
+use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Exception\LocalizedException;
+
 interface FeedbackRepositoryInterface
 {
     /**
      * Save feedback.
      *
-     * @param \Training\Feedback\Api\Data\FeedbackInterface $feedback
-     * @return \Training\Feedback\Api\Data\FeedbackInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @param FeedbackInterface $feedback
+     * @return FeedbackInterface
+     * @throws LocalizedException
      */
-    public function save(\Training\Feedback\Api\Data\FeedbackInterface $feedback);
+    public function save(FeedbackInterface $feedback);
 
     /**
      * Retrieve feedback.
      *
      * @param int $feedbackId
-     * @return \Training\Feedback\Api\Data\FeedbackInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @return FeedbackInterface
+     * @throws LocalizedException
      */
     public function getById($feedbackId);
     /**
      * Retrieve feedbacks matching the specified criteria.
      *
-     * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
+     * @param SearchCriteriaInterface $searchCriteria
      * @return \Training\Feedback\Api\Data\FeedbackSearchResultsInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
 
-    public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria);
+    public function getList(SearchCriteriaInterface $searchCriteria);
 
     /**
      * Delete feedback.
      *
-     * @param \Training\Feedback\Api\Data\FeedbackInterface $feedback
+     * @param FeedbackInterface $feedback
      * @return bool true on success
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
-    public function delete(\Training\Feedback\Api\Data\FeedbackInterface $feedback);
+    public function delete(FeedbackInterface $feedback);
 
     /**
      * Delete feedback by ID.
@@ -46,7 +50,7 @@ interface FeedbackRepositoryInterface
      * @param int $feedbackId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function deleteById($feedbackId);
 }

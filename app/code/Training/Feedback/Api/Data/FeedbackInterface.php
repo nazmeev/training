@@ -1,7 +1,10 @@
 <?php
 
 namespace Training\Feedback\Api\Data;
-interface FeedbackInterface
+
+use Magento\Framework\Api\ExtensibleDataInterface;
+
+interface FeedbackInterface extends ExtensibleDataInterface
 {
     /**#@+*/
     const FEEDBACK_ID = 'feedback_id';
